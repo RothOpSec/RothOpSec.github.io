@@ -21,7 +21,6 @@
       </nav>
     </div>
   </header>
-
   <main>
     <!-- HERO -->
     <section class="hero">
@@ -43,6 +42,73 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          I’ve worked in the casino industry for about 10 years as a dealer, where
+          accuracy, integrity, and staying calm under pressure are absolutely
+          required. Over time I realized I felt stagnant and wanted a career with
+          never-ending learning and real personal growth, which led me to pursue
+          IT and cybersecurity.
+        </p>
+        <p>
+          Today, I’m a full-time student and parent, actively building skills in
+          system administration, networking, and security. I’ve completed a help
+          desk internship at the Spokane Public Library where I worked with users
+          directly, set up and re-imaged workstations, and practiced basic
+          troubleshooting in a real environment.
+        </p>
+        <p>
+          I’m currently studying for the CompTIA A+ certification and am motivated,
+          hard-working, and eager to keep learning and contributing on a
+          professional IT or cybersecurity team.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <div class="grid skills-grid">
+          <div class="card">
+            <h3>Systems & OS</h3>
+            <ul>
+              <li>Windows 10/11 configuration & troubleshooting</li>
+              <li>Basic Linux (Kali, command line)</li>
+              <li>Virtual machines (VMware Workstation)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Networking & Security</h3>
+            <ul>
+              <li>TCP/IP, subnets, and basic routing concepts</li>
+              <li>Firewall rules & Windows Defender Firewall</li>
+              <li>Basic offensive security labs (Nmap, Responder, Hashcat)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Support & Help Desk</h3>
+            <ul>
+              <li>Workstation setup and imaging</li>
+              <li>End-user support & customer service</li>
+              <li>Basic hardware/software troubleshooting</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Tools & Other</h3>
+            <ul>
+              <li>VMware Workstation Pro</li>
+              <li>Microsoft 365 basics</li>
+              <li>Technical documentation & guides</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
@@ -51,59 +117,61 @@
           Each project links to a full PDF write-up that shows my real hands-on work
           in IT and cybersecurity.
         </p>
-
+        
         <div class="grid project-grid">
-
-          <!-- NEW: Microsoft Intune Lab -->
+          
+          <!-- Microsoft Intune Lab - NEW -->
           <article class="card project-card">
             <h3>Microsoft Intune Device Management Lab</h3>
             <p class="project-meta">
               Microsoft Intune • Microsoft 365 • Azure AD • Windows 11 • Autopilot
             </p>
             <p>
-              Built and documented a full Microsoft Intune environment for modern device management. 
-              Configured device enrollment, compliance policies, configuration profiles, and application deployment.
+              Built a complete modern device management lab using Microsoft Intune. 
+              Configured tenant setup, device enrollment, policies, app deployment, and compliance.
             </p>
             <ul class="project-points">
-              <li>Set up Intune tenant with Azure AD integration</li>
-              <li>Enrolled Windows 11 devices via Autopilot and manual methods</li>
-              <li>Created configuration profiles (device restrictions, BitLocker, VPN, etc.)</li>
-              <li>Deployed compliance policies and conditional access rules</li>
-              <li>Published Win32 and Microsoft Store apps</li>
-              <li>Implemented security baselines and monitored device compliance</li>
+              <li>Set up Intune tenant and connected to Azure AD</li>
+              <li>Enrolled Windows 11 devices using Autopilot and manual enrollment</li>
+              <li>Created configuration profiles and security baselines</li>
+              <li>Deployed applications and compliance policies</li>
+              <li>Implemented conditional access and monitored device health</li>
             </ul>
             <a class="project-link" href="projects/Microsoft Intune Lab.pdf" target="_blank">
               📄 View Full PDF Project
             </a>
           </article>
 
-          <!-- Virtual Cybersecurity Lab -->
+          <!-- Virtual Cybersecurity Attack & Defense Lab -->
           <article class="card project-card">
             <h3>Virtual Cybersecurity Attack & Defense Lab</h3>
             <p class="project-meta">
               VMware • Windows 10 • Kali Linux • Nmap • Responder • Hashcat
             </p>
             <p>
-              Designed and documented a virtual lab using VMware Workstation Pro to simulate real-world cybersecurity scenarios.
+              Designed and documented a virtual lab using VMware Workstation Pro,
+              running Windows 10 and Kali Linux to simulate real-world cybersecurity
+              scenarios.
             </p>
             <ul class="project-points">
-              <li>Deployed Windows 10 and Kali Linux VMs</li>
-              <li>Configured networking and firewall rules</li>
-              <li>Performed LLMNR poisoning and hash cracking attacks</li>
+              <li>Installed and configured VMware on Windows 11.</li>
+              <li>Deployed Kali Linux and Windows 10 virtual machines.</li>
+              <li>Configured inter-VM networking and firewall rules.</li>
+              <li>Performed LLMNR poisoning and hash cracking attacks.</li>
             </ul>
             <a class="project-link" href="projects/virtual-cyber-lab-handbook.pdf" target="_blank">
               📄 View Full PDF Project
             </a>
           </article>
 
-          <!-- Active Directory -->
+          <!-- Active Directory Lab -->
           <article class="card project-card">
             <h3>Active Directory & Group Policy Implementation Lab</h3>
             <p class="project-meta">
               Windows Server 2025 • Active Directory • Group Policy • VMware
             </p>
             <p>
-              Built a complete Active Directory domain from scratch with custom OU structure and Group Policy.
+              Built a complete Active Directory domain from scratch. Created OUs, users, groups, and custom GPOs.
             </p>
             <a class="project-link" href="projects/Active-Directory2.pdf" target="_blank">
               📄 View Full PDF Project
@@ -114,17 +182,118 @@
           <article class="card project-card">
             <h3>Professional Penetration Test Report – North Cascades Community College</h3>
             <p class="project-meta">
-              Kali Linux • Nmap • Nessus • Wireshark • Netcat
+              Kali Linux • Nmap • Nessus • Wireshark • Netcat • Ethical Hacking
             </p>
             <p>
-              Conducted a full-scope penetration test simulating an insider threat scenario.
+              Conducted a full-scope penetration test simulating an insider threat. Delivered executive summary and remediation roadmap.
             </p>
             <a class="project-link" href="projects/CYBR_320_Project_FinalReport_RothShawn.pdf" target="_blank">
               📄 View Full PDF Project
             </a>
           </article>
 
-          <!-- NEW: EDR Compare -->
+          <!-- EDR Compare - NEW -->
           <article class="card project-card">
             <h3>EDR Solutions Comparison Lab</h3>
-            <p class
+            <p class="project-meta">
+              Microsoft Defender • CrowdStrike • SentinelOne • EDR Tools
+            </p>
+            <p>
+              Hands-on comparison of leading Endpoint Detection and Response platforms in a lab environment.
+            </p>
+            <a class="project-link" href="projects/EDR Compare.pdf" target="_blank">
+              📄 View Full PDF Project
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section section-alt">
+      <div class="container">
+        <h2>Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>IT Help Desk Intern – Spokane Public Library</h3>
+            <p class="timeline-meta">Internship • Technical Support</p>
+            <ul>
+              <li>Performed basic troubleshooting for staff workstations and devices.</li>
+              <li>Re-imaged and set up new machines for end users.</li>
+              <li>Assisted with account, software, and peripheral issues.</li>
+              <li>Delivered friendly, clear customer service to a wide range of users.</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <h3>Casino Dealer – Northern Quest & Other Casinos</h3>
+            <p class="timeline-meta">10 Years • High-Pressure Environment</p>
+            <ul>
+              <li>Handled chips, cash, and game rules with high accuracy.</li>
+              <li>Maintained integrity and security at the table.</li>
+              <li>Developed strong communication, focus, and professionalism.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="container">
+        <h2>Education & Certifications</h2>
+        <div class="grid education-grid">
+          <div class="card">
+            <h3>BAS – Cybersecurity (In Progress)</h3>
+            <p class="edu-meta">Spokane Falls Community College</p>
+            <p>
+              Currently enrolled in the BAS Cybersecurity program, focusing on
+              network security, incident response, and secure system design.
+            </p>
+          </div>
+          <div class="card">
+            <h3>AAS – Information Technology (Cybersecurity Emphasis)</h3>
+            <p class="edu-meta">Spokane Falls Community College</p>
+            <p>
+              Completed coursework in operating systems, networking, security
+              fundamentals, and technical writing with a focus on practical labs.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Certifications</h3>
+            <ul>
+              <li>CompTIA A+ (Studying / In Progress)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="section-intro">
+          Interested in talking about an IT or cybersecurity role, internship, or help desk opportunity?
+          Reach out – I’d be happy to connect.
+        </p>
+        <div class="contact-box">
+          <p><strong>Email:</strong> <a href="mailto:rothshawn@yahoo.com">rothshawn@yahoo.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/RothOpSec" target="_blank">github.com/RothOpSec</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/shawn-roth-aba9862aa/" target="_blank">linkedin.com/in/shawn-roth-aba9862aa</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Shawn Roth. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
