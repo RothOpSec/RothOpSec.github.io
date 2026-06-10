@@ -40,9 +40,10 @@
       line-height: 1.6;
       font-size: 17px;
     }
-    /* faint network topology: nodes + links */
+    /* faint blueprint grid */
     body::before {
       content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      /* faint network topology: nodes + links */
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg stroke='%239AA1AB' stroke-opacity='0.10' fill='none'%3E%3Cpath d='M30 40 L120 90 L210 30 M120 90 L90 200 L200 230 M90 200 L20 150 M210 30 L230 130 L200 230 M230 130 L120 90'/%3E%3C/g%3E%3Cg fill='%239AA1AB' fill-opacity='0.16'%3E%3Ccircle cx='30' cy='40' r='3'/%3E%3Ccircle cx='120' cy='90' r='4'/%3E%3Ccircle cx='210' cy='30' r='3'/%3E%3Ccircle cx='90' cy='200' r='3.5'/%3E%3Ccircle cx='200' cy='230' r='3'/%3E%3Ccircle cx='20' cy='150' r='2.5'/%3E%3Ccircle cx='230' cy='130' r='3'/%3E%3C/g%3E%3C/svg%3E");
       background-size: 260px 260px;
       mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.25) 60%, transparent);
@@ -57,3 +58,648 @@
     }
     .mono { font-family: "IBM Plex Mono", monospace; }
     ::selection { background: rgba(61,123,253,0.35); }
+
+    /* ---------- NAV ---------- */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10, 15, 22, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: "Archivo", sans-serif;
+      font-weight: 900; font-size: 1.05rem; letter-spacing: 0.02em;
+      color: var(--ink); text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .logo .tld { color: var(--ink-soft); font-weight: 500; }
+    .nav { display: flex; gap: 26px; }
+    .nav a {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink-soft); text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .nav a:hover { color: var(--accent); }
+    @media (max-width: 720px) { .nav { display: none; } }
+
+    /* ---------- HERO ---------- */
+    .hero { padding: 92px 0 80px; border-bottom: 1px solid var(--line); }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center;
+    }
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .eyebrow {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent-2); margin-bottom: 18px; text-transform: none; letter-spacing: 0.04em;
+    }
+    .eyebrow::before { content: "> "; color: var(--accent); }
+    h1 {
+      font-family: "Archivo", sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(100deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .hero-text { color: var(--ink-soft); max-width: 54ch; margin-bottom: 30px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; text-decoration: none;
+      font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 13px 24px; border-radius: 6px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary {
+      background: linear-gradient(100deg, var(--accent), var(--accent-2));
+      color: #04121C;
+      box-shadow: 0 8px 26px -10px var(--glow);
+    }
+    .btn.primary:hover { box-shadow: 0 12px 32px -10px var(--glow); }
+    .btn.outline { border: 1.5px solid var(--line); color: var(--ink); background: rgba(21,32,46,0.5); }
+    .btn.outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Credential readout — signature element */
+    .readout {
+      position: relative;
+      background: linear-gradient(180deg, var(--surface-2), var(--surface));
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 12px; padding: 26px 26px 20px;
+      font-family: "IBM Plex Mono", monospace;
+      box-shadow: 0 24px 60px -24px rgba(0,0,0,0.7), 0 0 0 1px rgba(61,123,253,0.07);
+    }
+    .readout::before {
+      content: ""; position: absolute; inset: 0; border-radius: 12px; padding: 1px;
+      background: linear-gradient(140deg, rgba(61,123,253,0.55), transparent 35%, transparent 70%, rgba(133,185,255,0.45));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none;
+    }
+    .readout-title {
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); border-bottom: 1px solid var(--line);
+      padding-bottom: 12px; margin-bottom: 14px;
+    }
+    .readout-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 16px; padding: 9px 0; font-size: 0.85rem;
+      border-bottom: 1px dashed var(--line);
+    }
+    .readout-row:last-child { border-bottom: none; }
+    .status { font-size: 0.74rem; letter-spacing: 0.08em; white-space: nowrap; }
+    .status::before { content: "\25CF "; font-size: 0.6rem; vertical-align: 1px; }
+    .status.ok { color: var(--accent-2); text-shadow: 0 0 14px rgba(133,185,255,0.55); }
+    .status.wip { color: var(--amber); }
+    .readout-prompt {
+      margin-top: 14px; font-size: 0.8rem; color: var(--accent);
+    }
+    .cursor { animation: blink 1.1s steps(1) infinite; color: var(--accent-2); }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ---------- SECTIONS ---------- */
+    .section { padding: 80px 0; }
+    .section-alt { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    h2 {
+      font-family: "Archivo", sans-serif; font-weight: 900;
+      font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .section-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); display: block; margin-bottom: 10px;
+    }
+    .section-intro { color: var(--ink-soft); max-width: 64ch; margin-bottom: 36px; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; margin-top: 28px; }
+    @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-grid p { margin-bottom: 18px; color: var(--ink-soft); }
+    .about-grid p strong { color: var(--ink); }
+    .about-grid p:last-child { margin-bottom: 0; }
+    .fact-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+      padding: 24px; align-self: start;
+    }
+    .fact-card h3 {
+      font-family: "IBM Plex Mono", monospace; font-size: 0.74rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .fact-card ul { list-style: none; }
+    .fact-card li {
+      padding: 8px 0; font-size: 0.92rem; color: var(--ink);
+      border-bottom: 1px dashed var(--line);
+    }
+    .fact-card li:last-child { border-bottom: none; }
+
+    /* Skills */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px; margin-top: 32px;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .card:hover { border-color: rgba(61,123,253,0.5); transform: translateY(-2px); }
+    .card h3 {
+      font-family: "Archivo", sans-serif; font-weight: 700; font-size: 1.02rem;
+      margin-bottom: 12px; color: var(--ink);
+    }
+    .card ul { list-style: none; }
+    .card li {
+      position: relative; padding: 5px 0 5px 18px;
+      font-size: 0.93rem; color: var(--ink-soft);
+    }
+    .card li::before {
+      content: "▸"; position: absolute; left: 0; color: var(--accent-2); font-size: 0.8rem;
+    }
+
+    /* ---------- PROJECTS (lab log) ---------- */
+    .lab-entry {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+      padding: 30px 30px 26px; margin-bottom: 22px;
+      border-left: 3px solid var(--accent);
+      transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+    .lab-entry:hover {
+      box-shadow: 0 20px 50px -24px rgba(61,123,253,0.4);
+      transform: translateY(-3px);
+      border-color: rgba(61,123,253,0.45);
+      border-left-color: var(--accent-2);
+    }
+    .lab-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap; margin-bottom: 6px;
+    }
+    .lab-index {
+      font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.12em; color: var(--accent-2);
+    }
+    .lab-entry h3 {
+      font-family: "Archivo", sans-serif; font-weight: 700;
+      font-size: 1.25rem; letter-spacing: -0.01em; margin: 4px 0 12px; color: var(--ink);
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tag {
+      font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
+      color: var(--accent); background: rgba(61,123,253,0.1);
+      border: 1px solid rgba(61,123,253,0.3); border-radius: 4px; padding: 3px 9px;
+    }
+    .lab-entry > p { color: var(--ink-soft); margin-bottom: 14px; max-width: 70ch; }
+    .project-points { list-style: none; margin-bottom: 18px; }
+    .project-points li {
+      position: relative; padding: 4px 0 4px 20px; font-size: 0.95rem; color: var(--ink);
+    }
+    .project-points li::before {
+      content: "—"; position: absolute; left: 0; color: var(--accent-2);
+    }
+    .project-points li.planned { color: var(--ink-soft); }
+    .project-points li.planned::before { content: "▹"; color: var(--amber); }
+    .project-link {
+      display: inline-block;
+      font-family: "IBM Plex Mono", monospace; font-size: 0.83rem; font-weight: 600;
+      color: var(--accent); text-decoration: none;
+      border-bottom: 2px solid rgba(61,123,253,0.45); padding-bottom: 2px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .project-link:hover { color: var(--accent-2); border-color: var(--accent-2); }
+
+    /* Experience */
+    .timeline { margin-top: 32px; }
+    .timeline-item {
+      position: relative; padding: 0 0 36px 32px;
+      border-left: 2px solid var(--line);
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: ""; position: absolute; left: -7px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(61,123,253,0.75);
+      border: 2.5px solid var(--bg-2);
+    }
+    .timeline-item h3 {
+      font-family: "Archivo", sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--ink);
+    }
+    .timeline-meta {
+      font-family: "IBM Plex Mono", monospace; font-size: 0.78rem;
+      letter-spacing: 0.06em; color: var(--amber); margin: 4px 0 12px;
+    }
+    .timeline-item ul { list-style: none; }
+    .timeline-item li {
+      position: relative; padding: 4px 0 4px 18px; font-size: 0.95rem; color: var(--ink-soft);
+    }
+    .timeline-item li::before {
+      content: "▸"; position: absolute; left: 0; color: var(--accent-2); font-size: 0.8rem;
+    }
+
+    /* Education */
+    .education-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px; margin-top: 32px;
+    }
+    .edu-meta {
+      font-family: "IBM Plex Mono", monospace; font-size: 0.76rem;
+      letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 12px;
+    }
+    .edu-date { color: var(--amber); }
+    .education-grid .card p { font-size: 0.95rem; color: var(--ink-soft); }
+
+    /* Contact */
+    .contact-box {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+      padding: 28px; max-width: 520px;
+      font-family: "IBM Plex Mono", monospace; font-size: 0.92rem;
+    }
+    .contact-box p { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+    .contact-box p:last-child { border-bottom: none; }
+    .contact-box strong { color: var(--ink-soft); font-weight: 600; }
+
+    .site-footer {
+      border-top: 1px solid var(--line); padding: 28px 0;
+      font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; color: var(--ink-soft);
+    }
+</style>
+</head>
+<body>
+  <!-- HEADER / NAVBAR -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a class="logo" href="#top">Roth<span>OpSec</span><span class="tld">.github.io</span></a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Lab Log</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">shawn@spokane:~$ whoami</p>
+          <h1>I build, secure, and <em>document</em> real systems.</h1>
+          <p class="hero-text">
+            I'm Shawn Roth — a CompTIA A+ certified IT professional finishing a
+            bachelor's in cybersecurity. Every lab I run, from Microsoft Intune
+            deployments to Active Directory builds to penetration tests, ends the
+            same way: a full written report. Because in IT, work that isn't
+            documented didn't happen.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn primary">Read the Lab Log</a>
+            <a href="#contact" class="btn outline">Contact Me</a>
+          </div>
+        </div>
+
+        <aside class="readout" aria-label="Current credentials and status">
+          <p class="readout-title">RothOpSec# show status</p>
+          <div class="readout-row"><span>CompTIA A+</span><span class="status ok">CERTIFIED · MAY 2026</span></div>
+          <div class="readout-row"><span>AAS, Information Technology</span><span class="status ok">COMPLETE · JAN 2026</span></div>
+          <div class="readout-row"><span>BAS, Cybersecurity</span><span class="status wip">IN PROGRESS · DEC 2027</span></div>
+          <div class="readout-row"><span>Cisco CCNA</span><span class="status wip">IN PROGRESS</span></div>
+          <div class="readout-row"><span>Help desk experience</span><span class="status ok">FIELD-TESTED</span></div>
+          <p class="readout-prompt">RothOpSec#<span class="cursor">▊</span></p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <span class="section-label">01 — About</span>
+        <h2>About Me</h2>
+        <div class="about-grid">
+          <div>
+            <p>
+              I'm an IT support and cybersecurity professional in Spokane. I hold the
+              CompTIA A+ certification and an AAS in Information Technology with a
+              Cyber Defender emphasis, I'm completing a Bachelor of Applied Science in
+              Cybersecurity, and I'm preparing for the Cisco CCNA. My hands-on
+              experience comes from a help desk internship at the Spokane Public
+              Library — supporting real users, imaging workstations, and working a
+              live ticket queue — and from self-built labs in endpoint management,
+              Active Directory, and offensive security, each documented in a full
+              technical report.
+            </p>
+            <p>
+              Before IT, I spent ten years as a casino dealer at Northern Quest Resort
+              &amp; Casino. That work runs on the same things good IT support runs on:
+              total accuracy under pressure, strict procedural and regulatory
+              compliance, handling confidential transactions, and staying calm and
+              professional with frustrated people. I didn't leave those skills at the
+              table — I brought them with me.
+            </p>
+            <p>
+              I'm also a full-time dad, which means I'm efficient with my time and
+              serious about what I commit to. I'm looking for an IT support, network,
+              or security role where I can keep learning fast and contribute from
+              day one.
+            </p>
+          </div>
+          <div class="fact-card">
+            <h3>// quick facts</h3>
+            <ul>
+              <li>📍 Spokane, Washington</li>
+              <li>🎓 BAS Cybersecurity — Dec 2027</li>
+              <li>🛡️ CompTIA A+ certified</li>
+              <li>🌐 CCNA in progress</li>
+              <li>🗂️ Every lab → full PDF report</li>
+              <li>♠️ 10 yrs regulated, high-pressure ops</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <span class="section-label">02 — Skills</span>
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="card">
+            <h3>Cloud &amp; Identity</h3>
+            <ul>
+              <li>Microsoft 365 administration basics</li>
+              <li>Microsoft Intune (MDM enrollment, policies, compliance)</li>
+              <li>Azure AD / Entra ID user &amp; license provisioning</li>
+              <li>Active Directory &amp; Group Policy</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Networking &amp; Security</h3>
+            <ul>
+              <li>TCP/IP, DNS, DHCP, subnetting</li>
+              <li>Windows Defender Firewall policy &amp; hardening</li>
+              <li>Wireshark, Nmap, Nessus</li>
+              <li>Offensive security labs (Responder, Hashcat)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Support &amp; Help Desk</h3>
+            <ul>
+              <li>Ticketing systems (Kibana, Mantis)</li>
+              <li>Workstation setup, imaging &amp; deployment</li>
+              <li>End-user support &amp; de-escalation</li>
+              <li>Hardware, software &amp; printer troubleshooting</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Systems &amp; Tools</h3>
+            <ul>
+              <li>Windows 10/11 administration</li>
+              <li>Windows Server 2025</li>
+              <li>Linux (Kali, command line)</li>
+              <li>VMware Workstation Pro · technical documentation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS / LAB LOG -->
+    <section id="projects" class="section">
+      <div class="container">
+        <span class="section-label">03 — Projects</span>
+        <h2>The Lab Log</h2>
+        <p class="section-intro">
+          Self-built labs, each closed out with a full PDF write-up — environment,
+          objectives, step-by-step implementation, verification, and lessons learned.
+        </p>
+
+        <!-- Microsoft Intune Lab -->
+        <article class="lab-entry">
+          <div class="lab-head">
+            <span class="lab-index">LAB 01 · ENDPOINT MANAGEMENT</span>
+          </div>
+          <h3>Microsoft Intune &amp; Azure AD Endpoint Management Lab</h3>
+          <div class="tags">
+            <span class="tag">Microsoft Intune</span>
+            <span class="tag">Microsoft 365</span>
+            <span class="tag">Azure AD / Entra ID</span>
+            <span class="tag">Windows 11</span>
+          </div>
+          <p>
+            Built a Microsoft 365 tenant from scratch and managed a Windows 11
+            endpoint end-to-end with Intune — enrollment, configuration, security
+            hardening, and compliance verification.
+          </p>
+          <ul class="project-points">
+            <li>Created an M365 tenant and provisioned a licensed user in Azure AD (Entra ID)</li>
+            <li>Enrolled a Windows 11 VM into Intune via MDM enrollment</li>
+            <li>Built Settings Catalog configuration profiles and verified policy application</li>
+            <li>Deployed Defender Firewall baseline plus custom rules blocking high-risk ports (SMB 445, HTTP 80)</li>
+            <li>Confirmed device compliance and tested policy sync behavior</li>
+            <li class="planned">Planned next: Conditional Access with MFA enforcement, Win32 app deployment, BitLocker policy</li>
+          </ul>
+          <a class="project-link" href="projects/Microsoft Intune Lab.pdf" target="_blank">View the full lab report (PDF) →</a>
+        </article>
+
+        <!-- Active Directory Lab -->
+        <article class="lab-entry">
+          <div class="lab-head">
+            <span class="lab-index">LAB 02 · IDENTITY &amp; ACCESS</span>
+          </div>
+          <h3>Active Directory &amp; Group Policy Implementation Lab</h3>
+          <div class="tags">
+            <span class="tag">Windows Server 2025</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">Group Policy</span>
+            <span class="tag">VMware</span>
+          </div>
+          <p>
+            Built a complete Active Directory domain from scratch — the same account
+            setup, access control, and policy enforcement work that runs every
+            corporate network.
+          </p>
+          <ul class="project-points">
+            <li>Deployed a Windows Server 2025 domain controller in VMware</li>
+            <li>Created users, security groups, and Organizational Units</li>
+            <li>Designed and enforced custom Group Policy Objects</li>
+            <li>Practiced onboarding/offboarding-style account workflows</li>
+          </ul>
+          <a class="project-link" href="projects/Active-Directory2.pdf" target="_blank">View the full lab report (PDF) →</a>
+        </article>
+
+        <!-- Attack & Defense Lab -->
+        <article class="lab-entry">
+          <div class="lab-head">
+            <span class="lab-index">LAB 03 · OFFENSE &amp; DEFENSE</span>
+          </div>
+          <h3>Virtual Cybersecurity Attack &amp; Defense Lab</h3>
+          <div class="tags">
+            <span class="tag">VMware</span>
+            <span class="tag">Kali Linux</span>
+            <span class="tag">Nmap</span>
+            <span class="tag">Responder</span>
+            <span class="tag">Hashcat</span>
+          </div>
+          <p>
+            Designed a virtual attack/defense environment with Windows 10 and Kali
+            Linux to understand attacks from both sides of the wire.
+          </p>
+          <ul class="project-points">
+            <li>Built and networked isolated Windows and Kali VMs in VMware Workstation Pro</li>
+            <li>Configured inter-VM networking and firewall rules</li>
+            <li>Executed LLMNR poisoning and offline hash-cracking attacks</li>
+            <li>Documented the kill chain and defensive countermeasures</li>
+          </ul>
+          <a class="project-link" href="projects/virtual-cyber-lab-handbook.pdf" target="_blank">View the full lab report (PDF) →</a>
+        </article>
+
+        <!-- Pen Test Report -->
+        <article class="lab-entry">
+          <div class="lab-head">
+            <span class="lab-index">LAB 04 · PENETRATION TEST</span>
+          </div>
+          <h3>Professional Penetration Test Report — North Cascades Community College</h3>
+          <div class="tags">
+            <span class="tag">Kali Linux</span>
+            <span class="tag">Nmap</span>
+            <span class="tag">Nessus</span>
+            <span class="tag">Wireshark</span>
+            <span class="tag">Netcat</span>
+          </div>
+          <p>
+            Conducted a full-scope penetration test simulating an insider threat,
+            delivered as a professional report with an executive summary and a
+            prioritized remediation roadmap.
+          </p>
+          <a class="project-link" href="projects/CYBR_320_Project_FinalReport_RothShawn.pdf" target="_blank">View the full report (PDF) →</a>
+        </article>
+
+        <!-- EDR Compare -->
+        <article class="lab-entry">
+          <div class="lab-head">
+            <span class="lab-index">LAB 05 · ENDPOINT DEFENSE</span>
+          </div>
+          <h3>EDR Solutions Comparison Lab</h3>
+          <div class="tags">
+            <span class="tag">Microsoft Defender</span>
+            <span class="tag">CrowdStrike</span>
+            <span class="tag">SentinelOne</span>
+          </div>
+          <p>
+            Hands-on comparison of leading Endpoint Detection and Response platforms —
+            deployment, detection behavior, and management experience side by side.
+          </p>
+          <a class="project-link" href="projects/EDR Compare.pdf" target="_blank">View the full report (PDF) →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section section-alt">
+      <div class="container">
+        <span class="section-label">04 — Experience</span>
+        <h2>Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>IT Help Desk Intern — Spokane Public Library</h3>
+            <p class="timeline-meta">NOV–DEC 2025 · TECHNICAL SUPPORT</p>
+            <ul>
+              <li>Provided first-line support via phone, ticketing system, and in person for hardware, software, and network issues</li>
+              <li>Imaged, configured, and deployed Windows workstations for staff and public use</li>
+              <li>Resolved account, software, and peripheral issues; documented incidents through resolution</li>
+              <li>Created user-facing documentation that improved staff self-sufficiency</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <h3>Poker Dealer — Northern Quest Resort &amp; Casino</h3>
+            <p class="timeline-meta">2016–PRESENT · REGULATED, HIGH-PRESSURE OPERATIONS</p>
+            <ul>
+              <li>Ten years of high-accuracy work under Washington State Gambling Commission oversight</li>
+              <li>Handle confidential transactions with strict procedural compliance and integrity</li>
+              <li>De-escalate disputes and communicate clearly with every kind of customer, on every kind of night</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="container">
+        <span class="section-label">05 — Education</span>
+        <h2>Education &amp; Certifications</h2>
+        <div class="grid education-grid">
+          <div class="card">
+            <h3>BAS — Cybersecurity</h3>
+            <p class="edu-meta">SPOKANE FALLS COMMUNITY COLLEGE · <span class="edu-date">EXPECTED DEC 2027</span></p>
+            <p>
+              Bachelor of Applied Science coursework spanning network security,
+              identity management, risk management, security and compliance, and
+              incident response.
+            </p>
+          </div>
+          <div class="card">
+            <h3>AAS — Information Technology, Cyber Defender Emphasis</h3>
+            <p class="edu-meta">SPOKANE FALLS COMMUNITY COLLEGE · <span class="edu-date">COMPLETED JAN 2026</span></p>
+            <p>
+              Operating systems, networking, security fundamentals, and technical
+              writing — built around practical, hands-on labs.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Certifications</h3>
+            <ul>
+              <li>CompTIA A+ — earned May 2026</li>
+              <li>Cisco CCNA — in progress</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <span class="section-label">06 — Contact</span>
+        <h2>Contact</h2>
+        <p class="section-intro">
+          Hiring for an IT support, network, or security role in the Spokane area —
+          or just want to talk shop about one of the labs? Reach out.
+        </p>
+        <div class="contact-box">
+          <p><strong>Email:</strong> <a href="mailto:rothshawn@yahoo.com">rothshawn@yahoo.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/RothOpSec" target="_blank" rel="noopener">github.com/RothOpSec</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/shawn-roth-aba9862aa/" target="_blank" rel="noopener">linkedin.com/in/shawn-roth-aba9862aa</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Shawn Roth · RothOpSec · Spokane, WA</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
