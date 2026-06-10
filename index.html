@@ -3,297 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0E0F11" />
   <title>Shawn Roth | IT & Cybersecurity Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <!-- HEADER / NAVBAR -->
-  <header class="site-header">
-    <div class="container nav-container">
-      <div class="logo">Shawn<span>Roth</span></div>
-      <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-content">
-        <div>
-          <p class="eyebrow">Aspiring IT & Cybersecurity Professional</p>
-          <h1>Hi, I'm Shawn.</h1>
-          <p class="hero-text">
-            I’m a full-time father, student, and former casino dealer transitioning into
-            IT and cybersecurity. I’ve built hands-on experience through my degree
-            work, a help desk internship, and practical labs where I design, secure,
-            and break down real systems.
-          </p>
-          <div class="hero-actions">
-            <a href="#projects" class="btn primary">View My Projects</a>
-            <a href="#contact" class="btn outline">Contact Me</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>
-          I’ve worked in the casino industry for about 10 years as a dealer, where
-          accuracy, integrity, and staying calm under pressure are absolutely
-          required. Over time I realized I felt stagnant and wanted a career with
-          never-ending learning and real personal growth, which led me to pursue
-          IT and cybersecurity.
-        </p>
-        <p>
-          Today, I’m a full-time student and parent, actively building skills in
-          system administration, networking, and security. I’ve completed a help
-          desk internship at the Spokane Public Library where I worked with users
-          directly, set up and re-imaged workstations, and practiced basic
-          troubleshooting in a real environment.
-        </p>
-        <p>
-          I’m currently studying for the CompTIA A+ certification and am motivated,
-          hard-working, and eager to keep learning and contributing on a
-          professional IT or cybersecurity team.
-        </p>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section section-alt">
-      <div class="container">
-        <h2>Technical Skills</h2>
-        <div class="grid skills-grid">
-          <div class="card">
-            <h3>Systems & OS</h3>
-            <ul>
-              <li>Windows 10/11 configuration & troubleshooting</li>
-              <li>Basic Linux (Kali, command line)</li>
-              <li>Virtual machines (VMware Workstation)</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Networking & Security</h3>
-            <ul>
-              <li>TCP/IP, subnets, and basic routing concepts</li>
-              <li>Firewall rules & Windows Defender Firewall</li>
-              <li>Basic offensive security labs (Nmap, Responder, Hashcat)</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Support & Help Desk</h3>
-            <ul>
-              <li>Workstation setup and imaging</li>
-              <li>End-user support & customer service</li>
-              <li>Basic hardware/software troubleshooting</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Tools & Other</h3>
-            <ul>
-              <li>VMware Workstation Pro</li>
-              <li>Microsoft 365 basics</li>
-              <li>Technical documentation & guides</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Projects & Labs</h2>
-        <p class="section-intro">
-          Each project links to a full PDF write-up that shows my real hands-on work
-          in IT and cybersecurity.
-        </p>
-        
-        <div class="grid project-grid">
-          
-          <!-- Microsoft Intune Lab - NEW -->
-          <article class="card project-card">
-            <h3>Microsoft Intune Device Management Lab</h3>
-            <p class="project-meta">
-              Microsoft Intune • Microsoft 365 • Azure AD • Windows 11 • Autopilot
-            </p>
-            <p>
-              Built a complete modern device management lab using Microsoft Intune. 
-              Configured tenant setup, device enrollment, policies, app deployment, and compliance.
-            </p>
-            <ul class="project-points">
-              <li>Set up Intune tenant and connected to Azure AD</li>
-              <li>Enrolled Windows 11 devices using Autopilot and manual enrollment</li>
-              <li>Created configuration profiles and security baselines</li>
-              <li>Deployed applications and compliance policies</li>
-              <li>Implemented conditional access and monitored device health</li>
-            </ul>
-            <a class="project-link" href="projects/Microsoft Intune Lab.pdf" target="_blank">
-              📄 View Full PDF Project
-            </a>
-          </article>
-
-          <!-- Virtual Cybersecurity Attack & Defense Lab -->
-          <article class="card project-card">
-            <h3>Virtual Cybersecurity Attack & Defense Lab</h3>
-            <p class="project-meta">
-              VMware • Windows 10 • Kali Linux • Nmap • Responder • Hashcat
-            </p>
-            <p>
-              Designed and documented a virtual lab using VMware Workstation Pro,
-              running Windows 10 and Kali Linux to simulate real-world cybersecurity
-              scenarios.
-            </p>
-            <ul class="project-points">
-              <li>Installed and configured VMware on Windows 11.</li>
-              <li>Deployed Kali Linux and Windows 10 virtual machines.</li>
-              <li>Configured inter-VM networking and firewall rules.</li>
-              <li>Performed LLMNR poisoning and hash cracking attacks.</li>
-            </ul>
-            <a class="project-link" href="projects/virtual-cyber-lab-handbook.pdf" target="_blank">
-              📄 View Full PDF Project
-            </a>
-          </article>
-
-          <!-- Active Directory Lab -->
-          <article class="card project-card">
-            <h3>Active Directory & Group Policy Implementation Lab</h3>
-            <p class="project-meta">
-              Windows Server 2025 • Active Directory • Group Policy • VMware
-            </p>
-            <p>
-              Built a complete Active Directory domain from scratch. Created OUs, users, groups, and custom GPOs.
-            </p>
-            <a class="project-link" href="projects/Active-Directory2.pdf" target="_blank">
-              📄 View Full PDF Project
-            </a>
-          </article>
-
-          <!-- Penetration Test Report -->
-          <article class="card project-card">
-            <h3>Professional Penetration Test Report – North Cascades Community College</h3>
-            <p class="project-meta">
-              Kali Linux • Nmap • Nessus • Wireshark • Netcat • Ethical Hacking
-            </p>
-            <p>
-              Conducted a full-scope penetration test simulating an insider threat. Delivered executive summary and remediation roadmap.
-            </p>
-            <a class="project-link" href="projects/CYBR_320_Project_FinalReport_RothShawn.pdf" target="_blank">
-              📄 View Full PDF Project
-            </a>
-          </article>
-
-          <!-- EDR Compare - NEW -->
-          <article class="card project-card">
-            <h3>EDR Solutions Comparison Lab</h3>
-            <p class="project-meta">
-              Microsoft Defender • CrowdStrike • SentinelOne • EDR Tools
-            </p>
-            <p>
-              Hands-on comparison of leading Endpoint Detection and Response platforms in a lab environment.
-            </p>
-            <a class="project-link" href="projects/EDR Compare.pdf" target="_blank">
-              📄 View Full PDF Project
-            </a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section section-alt">
-      <div class="container">
-        <h2>Experience</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h3>IT Help Desk Intern – Spokane Public Library</h3>
-            <p class="timeline-meta">Internship • Technical Support</p>
-            <ul>
-              <li>Performed basic troubleshooting for staff workstations and devices.</li>
-              <li>Re-imaged and set up new machines for end users.</li>
-              <li>Assisted with account, software, and peripheral issues.</li>
-              <li>Delivered friendly, clear customer service to a wide range of users.</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <h3>Casino Dealer – Northern Quest & Other Casinos</h3>
-            <p class="timeline-meta">10 Years • High-Pressure Environment</p>
-            <ul>
-              <li>Handled chips, cash, and game rules with high accuracy.</li>
-              <li>Maintained integrity and security at the table.</li>
-              <li>Developed strong communication, focus, and professionalism.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" class="section">
-      <div class="container">
-        <h2>Education & Certifications</h2>
-        <div class="grid education-grid">
-          <div class="card">
-            <h3>BAS – Cybersecurity (In Progress)</h3>
-            <p class="edu-meta">Spokane Falls Community College</p>
-            <p>
-              Currently enrolled in the BAS Cybersecurity program, focusing on
-              network security, incident response, and secure system design.
-            </p>
-          </div>
-          <div class="card">
-            <h3>AAS – Information Technology (Cybersecurity Emphasis)</h3>
-            <p class="edu-meta">Spokane Falls Community College</p>
-            <p>
-              Completed coursework in operating systems, networking, security
-              fundamentals, and technical writing with a focus on practical labs.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Certifications</h3>
-            <ul>
-              <li>CompTIA A+ (Studying / In Progress)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section section-alt">
-      <div class="container">
-        <h2>Contact</h2>
-        <p class="section-intro">
-          Interested in talking about an IT or cybersecurity role, internship, or help desk opportunity?
-          Reach out – I’d be happy to connect.
-        </p>
-        <div class="contact-box">
-          <p><strong>Email:</strong> <a href="mailto:rothshawn@yahoo.com">rothshawn@yahoo.com</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/RothOpSec" target="_blank">github.com/RothOpSec</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/shawn-roth-aba9862aa/" target="_blank">linkedin.com/in/shawn-roth-aba9862aa</a></p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Shawn Roth. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  <meta name="description" content="Shawn Roth — CompTIA A+ certified IT support and cybersecurity student in Spokane, WA. Hands-on labs in Intune, Active Directory, and security, each documented in a full PDF write-up." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0E0F11;
+      --bg-2: #131417;
+      --surface: #17191D;
+      --surface-2: #1D2025;
+      --line: #2A2E35;
+      --ink: #EDEFF2;
+      --ink-soft: #9AA1AB;
+      --accent: #3D7BFD;
+      --accent-2: #85B9FF;
+      --amber: #F2B33D;
+      --glow: rgba(61, 123, 253, 0.45);
+      --max: 1080px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+    body {
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      background:
+        radial-gradient(1100px 500px at 80% -10%, rgba(61,123,253,0.1), transparent 60%),
+        radial-gradient(900px 500px at -10% 30%, rgba(133,185,255,0.07), transparent 60%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 17px;
+    }
+    /* faint network topology: nodes + links */
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg stroke='%239AA1AB' stroke-opacity='0.10' fill='none'%3E%3Cpath d='M30 40 L120 90 L210 30 M120 90 L90 200 L200 230 M90 200 L20 150 M210 30 L230 130 L200 230 M230 130 L120 90'/%3E%3C/g%3E%3Cg fill='%239AA1AB' fill-opacity='0.16'%3E%3Ccircle cx='30' cy='40' r='3'/%3E%3Ccircle cx='120' cy='90' r='4'/%3E%3Ccircle cx='210' cy='30' r='3'/%3E%3Ccircle cx='90' cy='200' r='3.5'/%3E%3Ccircle cx='200' cy='230' r='3'/%3E%3Ccircle cx='20' cy='150' r='2.5'/%3E%3Ccircle cx='230' cy='130' r='3'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 260px 260px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.25) 60%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.25) 60%, transparent);
+    }
+    main, .site-header, .site-footer { position: relative; z-index: 1; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    a { color: var(--accent); }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 2px;
+    }
+    .mono { font-family: "IBM Plex Mono", monospace; }
+    ::selection { background: rgba(61,123,253,0.35); }
